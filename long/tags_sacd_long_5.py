@@ -13,14 +13,14 @@ month = time.strftime('%m')
 today = time.strftime('%d')
 #hour = time.strftime('%H')
 #获取时间戳 今天凌晨和第二天凌晨 2012-6-7 2012-6-8
-starttime = time.mktime([int(year),int(month),int(today)-1,0,0,0,0,0,0])
-endtime = time.mktime([int(year),int(month),int(today),0,0,0,0,0,0])
+starttime = time.mktime([int(year),int(month),int(today)-int(sys.argv[1]),0,0,0,0,0,0])
+endtime = time.mktime([int(year),int(month),int(today)-int(sys.argv[2]),0,0,0,0,0,0])
 cursor.execute("SELECT SUM(num) AS num, action FROM `tag_1` where `action` not in ('login','new_user') and time between %s and %s group by action ",[starttime, endtime])
 dataall = cursor.fetchall()
 
 sec = starttime
 today = time.strftime("%Y%m%d",time.localtime())
-today = int(today)-1
+today = int(today)-int(sys.argv[1])
 if today<10:
 	today
 sql=''

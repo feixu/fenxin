@@ -12,7 +12,8 @@ year = time.strftime('%Y')
 month = time.strftime('%m')
 today = time.strftime('%d')
 
-today = int(today) - 1;
+today = int(today) - int(sys.argv[1])
+
 if today<10:
 	today = '0'+str(today)
 	
