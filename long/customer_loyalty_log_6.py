@@ -14,8 +14,8 @@ today = time.strftime('%Y-%m-%d')
 yesterday = time.strftime('%Y-%m-%d',[int(year),int(month),int(day)-1,0,0,0,0,0,0])
 
 #yesterday 00:00:00 to today 00:00:00
-starttime = time.mktime([int(year),int(month),int(day)-1,0,0,0,0,0,0])
-endtime = time.mktime([int(year),int(month),int(day),0,0,0,0,0,0])
+starttime = time.mktime([int(year),int(month),int(day)-int(sys.argv[1]),0,0,0,0,0,0])
+endtime = time.mktime([int(year),int(month),int(day)-int(sys.argv[2]),0,0,0,0,0,0])
 
 #get records already exist in database
 cursor.execute("select * from customer_loyalty_1",[])
